@@ -8,12 +8,15 @@ import A from './until/api'
 import './registerServiceWorker'
 import ElementUI from 'element-ui';
 import Storage from 'vue-ls';
+import animated from 'animate.css' // npm install animate.css --save安装，在引入
+
  
 
 import 'element-ui/lib/theme-chalk/index.css';
 import 'normalize.css/normalize.css'
 // import '../utils/rem.js'
 Vue.use(ElementUI);
+Vue.use(animated)
 
 
 Vue.config.productionTip = false

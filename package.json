@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@lucky-canvas/vue": "^0.0.5",
+    "animate.css": "^4.1.1",
     "axios": "^0.24.0",
     "core-js": "^2.6.5",
     "element-ui": "^2.15.6",
