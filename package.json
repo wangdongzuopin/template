@@ -13,6 +13,7 @@
     "axios": "^0.24.0",
     "core-js": "^2.6.5",
     "element-ui": "^2.15.6",
+    "lib-flexible": "^0.3.2",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
     "register-service-worker": "^1.6.2",

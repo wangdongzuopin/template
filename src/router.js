@@ -13,8 +13,8 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'Game',
-      component: Game
+      name: 'home',
+      component: Home
     },
     {
       path: '/about',

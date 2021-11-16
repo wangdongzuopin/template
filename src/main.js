@@ -9,7 +9,7 @@ import './registerServiceWorker'
 import ElementUI from 'element-ui';
 import Storage from 'vue-ls';
 import animated from 'animate.css' // npm install animate.css --save安装，在引入
-
+import 'lib-flexible'
  
 
 import 'element-ui/lib/theme-chalk/index.css';
