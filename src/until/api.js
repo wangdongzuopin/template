@@ -12,6 +12,16 @@ const A = {
             load:true,
             time:1000
           })
+    },
+    upload(data) {
+        // return axios.get(`${url}/ads/CKYD62QM.json?segment=placement:vuejsorg`);
+        return service.request({
+            method:'post',
+            url:`${url}file/uploadfiles1`,
+            load:true,
+            time:1000,
+            data:data
+          })
     }
 }
 

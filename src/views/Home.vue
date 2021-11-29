@@ -1,16 +1,37 @@
 <template>
   <div class="home">
-    主页
+    <Go :item="item" v-if="ishow"></Go>
+    <Title></Title>
+    <div class="main-font">
+      <img src="../assets/img/font1.png" alt="">
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue'
-
+import Go from '@/components/go.vue'
+import Back from '@/components/back.vue'
+import Title from '@/components/title.vue'
 export default {
-  name: 'home',
+  data(){
+    return{
+       item:'two',
+       ishow:true
+    }
+  },
   components: {
+    Back,Go,Title
+  },
+  methods: {
+   
+  },
+  mounted(){
+    setTimeout(() => {
+      this.ishow = true
+    }, 5000);
   }
-}
+};
 </script>
+
+<style>
+</style>

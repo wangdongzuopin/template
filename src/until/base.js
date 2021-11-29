@@ -4,7 +4,7 @@
 import service from "./request";
 switch(process.env.NODE_ENV){
     case 'development':
-        service.defaults.baseURL = 'https://srv.buysellads.com';
+        service.defaults.baseURL = 'http://192.168.0.215:8080/';
     break;
 
     case 'debug':

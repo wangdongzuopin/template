@@ -13,7 +13,8 @@ service.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencod
 // 设置公共url
 // 添加请求拦截器
 service.interceptors.request.use(function (config) {
-    setdevlp(config)
+    console.log(config);
+    // setdevlp(config)
     // 在发送请求之前做些什么
     return config;
 }, function (error) {

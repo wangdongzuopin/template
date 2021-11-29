@@ -9,15 +9,18 @@ import './registerServiceWorker'
 import ElementUI from 'element-ui';
 import Storage from 'vue-ls';
 import animated from 'animate.css' // npm install animate.css --save安装，在引入
-import 'lib-flexible'
- 
-
+import "./assets/css/index.less"
+import 'babel-polyfill'
 import 'element-ui/lib/theme-chalk/index.css';
 import 'normalize.css/normalize.css'
 // import '../utils/rem.js'
+// Toast
+import 'vue2-toast/lib/toast.css';
+import Toast from 'vue2-toast';
+Vue.use(Toast);
+
 Vue.use(ElementUI);
 Vue.use(animated)
-
 
 Vue.config.productionTip = false
 Vue.prototype.$local = localData
