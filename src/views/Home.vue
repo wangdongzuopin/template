@@ -24,8 +24,6 @@ export default {
 
 <style>
 .aa {
-  width: 411px;
-  height: 48px;
   font-size: 46px;
   font-family: MicrosoftYaHei;
   font-weight: 400;
