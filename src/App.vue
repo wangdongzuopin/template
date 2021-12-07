@@ -43,15 +43,7 @@ export default {
       return flag;
     }
   },
-  mounted(){
-    console.log(this._isMobile());
-    if(!this._isMobile()){
-      this.$router.push({name:'phone'})
-      this.$toast.bottom('建议使用手机浏览此网页');
-    }else{
-       this.$router.push({name:'home'})
-    }
-  }
+
 }
 </script>
 

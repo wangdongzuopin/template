@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Two from './views/two.vue'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
@@ -23,39 +22,6 @@ const router = new Router({
       meta: {
         index: 8,
       },
-    },
-    {
-      path: '/two',
-      name: 'two',
-      component: Two,
-      meta: {
-        index: 9,
-      },
-    },
-    {
-      path: '/three',
-      name: 'three',
-      component: () => import('./views/three.vue')
-    },
-    {
-      path: '/four',
-      name: 'four',
-      component: () => import('./views/four.vue')
-    },
-    {
-      path: '/five',
-      name: 'five',
-      component: () => import('./views/five.vue')
-    },
-    {
-      path: '/schedule',
-      name: 'six',
-      component: () => import('./views/Meeting/schedule.vue')
-    },
-    {
-      path: '/phone',
-      name: 'phone',
-      component: () => import('./views/phone.vue')
     },
   ],
   scrollBehavior (to, from, savedPosition) {

@@ -1,7 +1,6 @@
 import axios from 'axios'
 import QS from 'qs'
 import url from './base'
-import { message } from 'element-ui'
 const service = axios.create({
     baseURL: url
 });
@@ -42,14 +41,12 @@ service.interceptors.response.use(function (response) {
 
 function closemessage() {
     setTimeout(() => {
-        message.destroy()
     }, 500);
 }
 // 设置请求Loading和时间
 function setdevlp(config) {
     // 设置Loading
     const { load } = config || false;
-    load && message.loading({ content: 'Loading...', key, duration: 0 });
 
     const { time } = config || 0
     service.defaults.timeout = time * 10;

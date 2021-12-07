@@ -12,16 +12,19 @@
     "animate.css": "^4.1.1",
     "axios": "^0.24.0",
     "core-js": "^2.6.5",
-    "element-ui": "^2.15.6",
-    "lib-flexible": "^0.3.2",
+    "gifler": "0.1.0",
+    "html2canvas": "1.0.0-rc.4",
+    "jquery": "^3.6.0",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0",
+    "postcss-px2rem": "^0.3.0",
+    "px2rem-loader": "^0.1.9",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
     "vue-ls": "^4.0.0",
     "vue-router": "^3.0.3",
-    "vue2-toast": "^2.1.0",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "weixin-js-sdk": "1.4.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0",

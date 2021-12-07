@@ -1,37 +1,34 @@
 <template>
   <div class="home">
-    <Go :item="item" v-if="ishow"></Go>
-    <Title></Title>
-    <div class="main-font">
-      <img src="../assets/img/font1.png" alt="">
-    </div>
+    <div class="aa">长按保存图片,可分享朋友圈</div>
   </div>
 </template>
 
 <script>
-import Go from '@/components/go.vue'
-import Back from '@/components/back.vue'
-import Title from '@/components/title.vue'
 export default {
-  data(){
-    return{
-       item:'two',
-       ishow:true
-    }
+  data() {
+    return {
+      item: "two",
+      ishow: true,
+    };
   },
-  components: {
-    Back,Go,Title
-  },
-  methods: {
-   
-  },
-  mounted(){
+  components: {},
+  methods: {},
+  mounted() {
     setTimeout(() => {
-      this.ishow = true
+      this.ishow = true;
     }, 5000);
-  }
+  },
 };
 </script>
 
 <style>
+.aa {
+  width: 411px;
+  height: 48px;
+  font-size: 46px;
+  font-family: MicrosoftYaHei;
+  font-weight: 400;
+  color: #62c3b2;
+}
 </style>
