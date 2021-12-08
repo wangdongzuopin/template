@@ -1,16 +1,26 @@
-var webpack=require('webpack');
+const autoprefixer = require('autoprefixer');
+const pxtorem = require('postcss-pxtorem');
+// const vuxLoader = require('vux-loader')
+
 module.exports = {
     css: {
-        sourceMap: false,
         loaderOptions: {
-          postcss: {
-            plugins: [
-              require('postcss-px2rem')({
-                remUnit: 192
-              })
-            ]
-          }
-        },
-      },
-      publicPath :'./'
-}
+            postcss: {
+                plugins: [
+                    autoprefixer(),
+                    pxtorem({
+                        rootValue: 37.5,
+                        propList: ['*'],
+                    })
+                ]
+            }
+        }
+    },
+    // configureWebpack: config => {
+    //     require('vux-loader').merge(config, {
+    //         options: {},
+    //         plugins: ['vux-ui']
+    //     })
+    // },
+    publicPath: './'
+};

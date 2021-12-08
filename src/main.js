@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import axios from 'axios'
 import router from './router'
 import store from './store'
 import localData from './componentoperation/local'
@@ -8,11 +7,10 @@ import A from './until/api'
 import './registerServiceWorker'
 import Storage from 'vue-ls';
 import animated from 'animate.css' // npm install animate.css --save安装，在引入
-import "./assets/css/index.less"
 import 'babel-polyfill'
 import 'normalize.css/normalize.css'
-import './until/flexible.js'
-// import '../utils/rem.js'
+
+// 引入的多的话
 Vue.use(animated)
 Vue.config.productionTip = false
 Vue.prototype.$local = localData

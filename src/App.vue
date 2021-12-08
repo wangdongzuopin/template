@@ -5,9 +5,12 @@
 </template>
 
 <script>
+import wx from "weixin-js-sdk";
 export default {
   data() {
-    return {};
+    return {
+      params: {},
+    };
   },
   methods: {
     jump() {},
@@ -17,28 +20,47 @@ export default {
       );
       return flag;
     },
-
+    // 判断是否是微信浏览器
+    isWeiXin() {
+      let ua = window.navigator.userAgent.toLowerCase();
+      if(ua.match(/MicroMessenger/i) == "micromessenger"){
+        console.log('是微信浏览器，可以写逻辑了');
+      }else{
+        console.log('不是微信浏览器，可以写逻辑了');
+      }
+    },
+    // 设置微信接口返回数据
+    getwxinfo() {
+      let url = window.location.href.split("#")[0];
+      this.$api.getSignature(url).then((res) => {
+        this.params = res.data;
+        console.log(this.params);
+        this.setwx();
+      });
+    },
     // 获取用户信息
-    getuserinfo(){
-      
-    }
+    setwx() {
+      const { appid, noncestr, signature, timestamp, urlStr } = this.params;
+      wx.config({
+        debug: true,
+        appId: appid,
+        timestamp,
+        nonceStr: noncestr,
+        signature,
+        jsApiList: ["updateAppMessageShareData"],
+      });
+      wx.ready(function () {});
+    },
   },
-  mounted(){
-    this.getuserinfo()
-  }
+  mounted() {
+    this.isWeiXin()
+    this.$nextTick(()=>{})
+    this.getwxinfo();
+  },
 };
 </script>
 
 
-<style lang="less" scoped>
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
 
 
