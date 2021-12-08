@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="aa">长按保存图片,可分享朋友圈</div>
-    <!-- <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg"> -->
+    <van-button type="primary">主要按钮</van-button>
   </div>
 </template>
 

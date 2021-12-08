@@ -24,8 +24,6 @@
     "vue-ls": "^4.0.0",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1",
-    "vux": "^2.11.1",
-    "vux-loader": "^1.2.9",
     "weixin-js-sdk": "1.4.0-test"
   },
   "devDependencies": {

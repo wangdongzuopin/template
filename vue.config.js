@@ -1,6 +1,5 @@
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
-// const vuxLoader = require('vux-loader')
 
 module.exports = {
     css: {
@@ -11,16 +10,11 @@ module.exports = {
                     pxtorem({
                         rootValue: 37.5,
                         propList: ['*'],
+                        "selectorBlackList": ["van-"] //排除vant框架相关组件
                     })
                 ]
             }
         }
     },
-    // configureWebpack: config => {
-    //     require('vux-loader').merge(config, {
-    //         options: {},
-    //         plugins: ['vux-ui']
-    //     })
-    // },
-    publicPath: './'
+    publicPath :'./'
 };

@@ -7,10 +7,13 @@ import A from './until/api'
 import './registerServiceWorker'
 import Storage from 'vue-ls';
 import animated from 'animate.css' // npm install animate.css --save安装，在引入
+import "./assets/css/index.less"
 import 'babel-polyfill'
 import 'normalize.css/normalize.css'
 
 // 引入的多的话
+import { Button, Row, Col } from 'vant'
+Vue.use(Button).use(Row).use(Col)
 Vue.use(animated)
 Vue.config.productionTip = false
 Vue.prototype.$local = localData
