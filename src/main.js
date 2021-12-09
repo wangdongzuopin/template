@@ -12,9 +12,16 @@ import 'babel-polyfill'
 import 'normalize.css/normalize.css'
 import 'amfe-flexible/index.js'
 
+import {
+  imgsPreloader
+} from './componentoperation/imgPreloader';
+import imgPreloaderList from './componentoperation/imgPreloaderList';
 // 引入的多的话
-import { Button, Row, Col } from 'vant'
-Vue.use(Button).use(Row).use(Col)
+import {
+  Button,
+  Toast
+} from 'vant'
+Vue.use(Button).use(Toast)
 Vue.use(animated)
 Vue.config.productionTip = false
 Vue.prototype.$local = localData
@@ -24,10 +31,20 @@ const options = {
   name: 'ls', // 命名Vue变量.[ls]或this.[$ls],
   storage: 'local', // 存储名称: session, local, memory
 };
- 
+
+
 Vue.use(Storage, options);
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+
+(async () => {
+  await imgsPreloader(imgPreloaderList);
+  //关闭加载弹框
+  setTimeout(() => {
+    document.querySelector('.loading').style.display = 'none';
+    new Vue({
+      router,
+      store,
+      render: h => h(App)
+    }).$mount('#app');
+  }, 1000);
+
+})()

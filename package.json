@@ -23,6 +23,7 @@
     "vue": "^2.6.10",
     "vue-ls": "^4.0.0",
     "vue-router": "^3.0.3",
+    "vue-wechat-plugin": "^1.0.3",
     "vuex": "^3.0.1",
     "weixin-js-sdk": "1.4.0-test"
   },

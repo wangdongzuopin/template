@@ -8436,6 +8436,11 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://mirrors.huaweicloud.com/repository/npm/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
+vue-wechat-plugin@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/vue-wechat-plugin/-/vue-wechat-plugin-1.0.3.tgz#90cf42f3ca1e7a64d67f113b7c6d34a04ea85bef"
+  integrity sha512-mhV/LOtdVkn1Vks+klGZGJ8zNFRt1iHRP05mLyyz/gIggcIUCIEUB6J42l3k1PkUFJHWGQJef1fvqCyuI/XNkQ==
+
 vue@^2.6.10:
   version "2.6.14"
   resolved "https://mirrors.huaweicloud.com/repository/npm/vue/-/vue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"

@@ -6,10 +6,12 @@
 
 <script>
 import wx from "weixin-js-sdk";
+import pluwechat from "@/componentoperation/wchar.js"
 export default {
   data() {
     return {
       params: {},
+      pluwechat:pluwechat
     };
   },
   methods: {
@@ -38,8 +40,8 @@ export default {
         this.setwx();
       });
     },
-    // 获取用户信息
     setwx() {
+      var that = this
       const { appid, noncestr, signature, timestamp, urlStr } = this.params;
       wx.config({
         debug: true,
@@ -49,7 +51,9 @@ export default {
         signature,
         jsApiList: ["updateAppMessageShareData"],
       });
-      wx.ready(function () {});
+      wx.ready(function () {
+        that.pluwechat(appid)
+      });
     },
   },
   mounted() {

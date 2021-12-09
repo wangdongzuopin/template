@@ -23,6 +23,11 @@ const router = new Router({
         index: 8,
       },
     },
+    {
+      path: '/game',
+      name: 'game',
+      component: () => import('./views/pages/game.vue')
+    },
   ],
   scrollBehavior (to, from, savedPosition) {
     return savedPosition || { x: 0, y: 0 }
