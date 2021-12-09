@@ -10,6 +10,7 @@ import animated from 'animate.css' // npm install animate.css --save安装，在
 import "./assets/css/index.less"
 import 'babel-polyfill'
 import 'normalize.css/normalize.css'
+import 'amfe-flexible/index.js'
 
 // 引入的多的话
 import { Button, Row, Col } from 'vant'
