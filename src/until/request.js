@@ -1,58 +1,98 @@
 import axios from 'axios'
-import QS from 'qs'
-import url from './base'
-import { message } from 'element-ui'
+import {
+    getToken
+} from '@/until/auth'
+import {
+    Toast,Dialog
+} from 'vant';
+import store from '@/store'
+import router from '../router';
+
 const service = axios.create({
-    baseURL: url
-});
-const key = 'updatable';
-
-// 请求超时时间
-// post请求头
-service.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8';
-// 设置公共url
-// 添加请求拦截器
-service.interceptors.request.use(function (config) {
-    setdevlp(config)
-    // 在发送请求之前做些什么
-    return config;
-}, function (error) {
-    console.log(error);
-    // 对请求错误做些什么
-    return Promise.reject(error);
-});
-
-// 添加响应拦截器
-service.interceptors.response.use(function (response) {
-    console.log(response);
-    closemessage()
-    if (response.status === 200) {
-        return response.data
+    baseURL: process.env.VUE_APP_BASE_API, 
+    // baseURL: 'http://localhost:3000/', 
+    withCredentials: true, // send cookies when cross-domain requests
+    timeout: 5000*10 // request timeout
+})
+// request interceptor
+service.interceptors.request.use(
+    config => {
+        if (config.load) {
+            Toast.loading({
+                message: '加载中...',
+                forbidClick: true,
+                loadingType: 'spinner',
+            });
+        }
+        // do something before request is sent
+        if (store.getters.token) {
+            // let each request carry token
+            // ['X-Token'] is a custom headers key
+            // please modify it according to the actual situation
+            config.headers['token'] = getToken()
+        }
+        return config
+    },
+    error => {
+        // do something with request error
+        console.log(error) // for debug
+        return Promise.reject(error)
     }
+)
 
-    // 对响应数据做点什么
-    return response;
-}, function (error) {
-    console.log(error);
-    closemessage()
-    // 对响应错误做点什么
-    return Promise.reject(error);
-});
+// response interceptor
+service.interceptors.response.use(
+    /**
+     * If you want to get http information such as headers or status
+     * Please return  response => response
+     */
 
-function closemessage() {
-    setTimeout(() => {
-        message.destroy()
-    }, 500);
-}
-// 设置请求Loading和时间
-function setdevlp(config) {
-    // 设置Loading
-    const { load } = config || false;
-    load && message.loading({ content: 'Loading...', key, duration: 0 });
+    /**
+     * Determine the request status by custom code
+     * Here is just an example
+     * You can also judge the status by HTTP Status Code
+     */
+    response => {
+        const res = response.data
+        Toast.clear()
+        // if the custom code is not 20000, it is judged as an error.
+        if (res.code !== 20000) {
+            if (res.code === 50008 || res.code === 50012) {
+                Dialog.alert(res.message || '登录已过期，请重新登录', {
+                    confirmButtonText: '确认',
+                    type: 'warning'
+                }).then(() => {
+                   router.push({path:'/login'})
+                })
+            }
 
-    const { time } = config || 0
-    service.defaults.timeout = time * 10;
-
-}
-
+            if (res.code === 30000) {
+                router.go(-1)
+            }
+            return Promise.reject(res.message)
+        } else {
+            return res
+        }
+    },
+    error => {
+        if (error.message === 'timeout of 5000ms exceeded') {
+            Toast({
+                message: '请求数据超时',
+                type: 'error',
+                duration: 5 * 1000
+            })
+        } else {
+            Toast({
+                message: error.message,
+                type: 'error',
+                duration: 5 * 1000
+            })
+        }
+        setTimeout(() => {
+            Toast.clear()
+        }, 1000);
+        console.log(error);
+        return Promise.reject(error)
+    }
+)
 export default service
