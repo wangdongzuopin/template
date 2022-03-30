@@ -3,17 +3,28 @@ const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 const defaultSettings = require('./src/settings.js')
 const path = require('path')
-const name = defaultSettings.title || 'vue Element Admin' // page title
-
+const name = defaultSettings.title || 'temp' // page title
+const port = process.env.port || process.env.npm_config_port || 9999
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
+  // publicPath: process.env.NODE_ENV === 'uat'?'/jidatest':'/',
+  publicPath: process.env.ENV === 'staging'?'/jidatest':'/',
+  // publicPath: '/',
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
-  publicPath: '/',
+  devServer: {
+    port: port,
+    open: false,
+    overlay: {
+      warnings: false,
+      errors: true
+    },
+  },
+  
   css: {
     loaderOptions: {
       postcss: {
@@ -37,5 +48,5 @@ module.exports = {
         '@': resolve('src')
       }
     }
-  },
+  }
 };

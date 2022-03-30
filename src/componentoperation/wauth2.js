@@ -29,7 +29,6 @@ export default {
     const url_params = Object.fromEntries(window.location.search.slice(1).split('&').map( v => v.split('=')))
     store.commit('SETWCHATCODE',url_params.code)
     getdatauserinfo(url_params.code || getCode()).then((res) => {
-      console.log(res);
       debugger
       store.commit('SETUSERINFOWYCHAT',res.data)
     })
@@ -38,12 +37,10 @@ export default {
     var url = location.href.split('#')[0]
     // getDataCodee接口获取code值
     getDataCode(url).then((res) => {
-      console.log(res.data);
       // window.location.href = res.data
     })
 
     // axios.get('http://localhost:3000/getCode').then((res) => {
-    //   console.log(res)
     //   if(res.status == 200){
     //   }
     // })

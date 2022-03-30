@@ -1,7 +1,5 @@
 <template>
-  <div>
-      隐私声明
-  </div>
+  <h1>模板</h1>
 </template>
 
 <script>

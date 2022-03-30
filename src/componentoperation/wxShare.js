@@ -14,10 +14,14 @@ import store  from "../store";
  */
 export function getwxready(str) {
   var url = location.href.split('#')[0]
-  if(str.pcid && str.pcpoid){
-    var urlstr = `https://jd.unithought.com/pcid=${str.pcid}&pcpoid=${str.pcpoid}`
+  if(str.pcid || str.pcarticleid){
+    var urlstr = `https://jd.unithought.com/pcid=${str.pcid}&pcpoid=${str.pcpoid}&pcarticleid=${str.pcarticleid}`
   }else{
     var urlstr = `https://jd.unithought.com/`
+  }
+  console.log(str);
+  if(str.dname){
+    var urlstr = `https://jd.unithought.com/pcid=${str.pcid}&pcpoid=${str.pcpoid}&pcarticleid=${str.pcarticleid}&dname=${str.dname}`
   }
   
   getSignature(url).then(res => {
@@ -35,24 +39,71 @@ export function getwxready(str) {
         title:str.title, // 分享标题
         desc:str.desc, // 分享描述
         link:urlstr, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-        imgUrl:str.imgUrl, // 分享图标
+        imgUrl:str.imgUrl || 'https://jd.unithought.com/shareLogo.png', // 分享图标
         success: function () {
+          // alert('updateAppMessageShareData')
         }
       })
-
       wx.onMenuShareAppMessage({
         title:str.title, // 分享标题
         desc:str.desc, // 分享描述
         link:urlstr, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-        imgUrl:str.imgUrl, // 分享图标
+        imgUrl:str.imgUrl || 'https://jd.unithought.com/shareLogo.png', // 分享图标
         success: function () { 
             // 用户确认分享后执行的回调函数
+            // alert('onMenuShareAppMessage')
         },
         cancel: function () { 
             // 用户取消分享后执行的回调函数
         }
       })
+
+      // 朋友圈
+      wx.updateAppMessageShareData({
+        title:str.title, // 分享标题
+        desc:str.desc, // 分享描述
+        link:urlstr, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl:str.imgUrl || 'https://jd.unithought.com/shareLogo.png', // 分享图标
+        success: function () {
+          // alert('updateAppMessageShareData')
+        }
+      })
+      wx.onMenuShareTimeline({
+        title:str.title, // 分享标题
+        desc:str.desc, // 分享描述
+        link:urlstr, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl:str.imgUrl || 'https://jd.unithought.com/shareLogo.png', // 分享图标
+        success: function () {
+          // alert('updateAppMessageShareData')
+        }
+      })
     });
   }).catch(err => {
   })
+}
+
+
+export function getparams(form = ''){
+  var sharedata = {
+    title: '积大健康学苑',
+    desc: "欢迎加入积大健康学苑",
+    link: `https://jd.unithought.com/#/articledetails`,
+    imgUrl: '',
+  };
+
+  if(form){
+    var { pctitle, pcpicurl, video_link, cover_img,pcarticleid,pcid,pcpoid } = form;
+    var sharedata = {
+      title: pctitle,
+      desc: "欢迎加入积大健康学苑",
+      link: '',
+      imgUrl: pcpicurl,
+      pcid,
+      pcpoid,
+      pcarticleid,
+      dname:form.dname
+    };
+  }
+
+  getwxready(sharedata);
 }

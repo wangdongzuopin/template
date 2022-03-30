@@ -18,6 +18,6 @@ export default {
         durationDisplay: true, // 显示持续时间
         remainingTimeDisplay: true, // 是否显示剩余时间功能
         fullscreenToggle: true, // 是否显示全屏按钮
-        height:'205'
+        height:'210px'
     },
 }

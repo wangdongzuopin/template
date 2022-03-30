@@ -34,3 +34,11 @@ export function setlcoal(key,data) {
 export function removelcoal(key) {
   return Vue.ls.remove(key)
 }
+
+export function getUsercode() {
+  return localStorage.getItem('usercode')
+}
+
+export function setUsercode(usercode) {
+  return localStorage.getItem('usercode', usercode)
+}

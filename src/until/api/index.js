@@ -74,6 +74,15 @@ export function getPositionContent(params) {
     })
 }
 
+export function getArticle(params) {
+    return service.request({
+        method: 'get',
+        url: `/f/getArticle`,
+        load: false,
+        params
+    })
+}
+
 
 
 

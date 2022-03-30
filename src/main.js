@@ -9,7 +9,7 @@ import 'babel-polyfill'
 import 'normalize.css/normalize.css'
 import 'amfe-flexible/index.js'
 import '@/assets/css/index.scss'
-import moment from 'moment'//导入文件
+import moment from 'moment' //导入文件
 import {
   imgsPreloader
 } from './componentoperation/imgPreloader';
@@ -25,20 +25,40 @@ import {
   Icon,
   Tab,
   Tabs,
-  Area ,
-  Swipe, SwipeItem,Skeleton ,CountDown ,
-  List,Checkbox, CheckboxGroup,Form ,Notify ,Search ,Tag,Popup ,Cell, CellGroup ,Empty,Cascader 
+  Area,
+  Loading,
+  Swipe,
+  SwipeItem,
+  Skeleton,
+  CountDown,
+  ImagePreview,
+  Overlay,
+  List,
+  Checkbox,
+  CheckboxGroup,
+  Form,
+  Notify,
+  Search,
+  Tag,
+  Popup,
+  Cell,
+  CellGroup,
+  Empty,
+  Cascader,
+  NoticeBar 
 } from 'vant'
-Vue.use(Button).use(Toast).use(Skeleton).use(CountDown).use(Swipe).use(SwipeItem).use(Search).use(Area).use(Cell).use(Cascader).use(Empty).use(CellGroup).use(Tag).use(Popup).use(VanImage).use(Field).use(Sticky).use(NavBar).use(Icon).use(Tab).use(Tabs).use(List).use(Checkbox).use(CheckboxGroup).use(Form).use(Notify)
+Vue.use(Button).use(Loading).use(NoticeBar).use(Toast).use(Overlay).use(ImagePreview).use(Skeleton).use(CountDown).use(Swipe).use(SwipeItem).use(Search).use(Area).use(Cell).use(Cascader).use(Empty).use(CellGroup).use(Tag).use(Popup).use(VanImage).use(Field).use(Sticky).use(NavBar).use(Icon).use(Tab).use(Tabs).use(List).use(Checkbox).use(CheckboxGroup).use(Form).use(Notify)
 
 
-Vue.prototype.$moment = moment;//赋值使用
+Vue.prototype.$moment = moment; //赋值使用
 // 设置避免重复点击
 import {
   preventReClick
 } from '@/until/common'
 Vue.use(preventReClick)
-
+Toast.setDefaultOptions('loading', {
+  forbidClick: true
+});
 
 
 Vue.use(animated)
@@ -51,13 +71,16 @@ const options = {
 Vue.use(Storage, options);
 
 // 开发环境下面使用vConsole进行调试
-if (process.env.NODE_ENV !== 'production') {
-  // const VConsole = require('vconsole')
-  // new VConsole()
-}
+// if (process.env.NODE_ENV !== 'production') {
+//   const VConsole = require('vconsole')
+//   new VConsole()
+// }
 
 (async () => {
-  document.querySelector('.loading').style.display = 'flex';
+  if (location.href.indexOf('articledetailsTemp') == -1) {
+    document.querySelector('.loading').style.display = 'flex';
+  }
+  // document.querySelector('.loading').style.display = 'flex';
   await imgsPreloader(imgPreloaderList);
   //关闭加载弹框
   setTimeout(() => {

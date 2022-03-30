@@ -3,7 +3,6 @@ import {
   } from '@/until/auth'
   
 const wchat = getlocal('Wechat_UserInfo')
-console.log(wchat);
 export const Defaultuser = {
     branch_name: "",
     city: "",

@@ -35,7 +35,6 @@ service.interceptors.request.use(
     },
     error => {
         // do something with request error
-        console.log(error) // for debug
         return Promise.reject(error)
     }
 )
@@ -54,7 +53,9 @@ service.interceptors.response.use(
      */
     response => {
         const res = response.data
-        Toast.clear()
+        setTimeout(() => {
+            Toast.clear()
+        }, 500);
         // if the custom code is not 20000, it is judged as an error.
         if (res.code !== 20000) {
             if (res.code === 50008 || res.code === 50012) {
@@ -91,7 +92,6 @@ service.interceptors.response.use(
         setTimeout(() => {
             Toast.clear()
         }, 1000);
-        console.log(error);
         return Promise.reject(error)
     }
 )

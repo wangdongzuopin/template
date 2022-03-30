@@ -13,6 +13,6 @@ export function getUsercode() {
 }
 
 export function setUsercode(usercode) {
-  return Cookies.set('usercode', usercode)
+  return Cookies.set('usercode', usercode,{ expires: 9999 })
 }
 
